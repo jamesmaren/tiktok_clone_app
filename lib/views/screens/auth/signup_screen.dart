@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tiktok_clone/constants.dart';
+import 'package:flutter_tiktok_clone/controller/auth_controller.dart';
 import 'package:flutter_tiktok_clone/views/widgets/text_input.dart';
+import 'package:get/route_manager.dart';
 
 class SignUpSCreen extends StatelessWidget {
   SignUpSCreen({Key? key}) : super(key: key);
@@ -32,7 +34,7 @@ class SignUpSCreen extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 10,
           ),
           Stack(
             children: [
@@ -46,16 +48,14 @@ class SignUpSCreen extends StatelessWidget {
                 left: 80,
                 bottom: -10,
                 child: IconButton(
-                  onPressed: () {
-                    print("pick image");
-                  },
+                  onPressed: () => authController.pickImage(),
                   icon: const Icon(Icons.add_a_photo),
                 ),
               )
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Container(
             width: MediaQuery.of(context).size.width,
@@ -67,7 +67,7 @@ class SignUpSCreen extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 15,
           ),
           Container(
             width: MediaQuery.of(context).size.width,
@@ -79,7 +79,7 @@ class SignUpSCreen extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 25,
+            height: 15,
           ),
           Container(
             width: MediaQuery.of(context).size.width,
@@ -87,11 +87,12 @@ class SignUpSCreen extends StatelessWidget {
             child: TextInputField(
               controller: _passwordController,
               labelText: "Password",
+              isObscure: true,
               icon: Icons.password,
             ),
           ),
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
           Container(
             width: MediaQuery.of(context).size.width - 40,
@@ -100,7 +101,11 @@ class SignUpSCreen extends StatelessWidget {
                 color: buttonColor,
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
             child: InkWell(
-              onTap: () {},
+              onTap: () => authController.registerUser(
+                  _usernameController.text,
+                  _emailController.text,
+                  _passwordController.text,
+                  authController.profilePhoto),
               child: const Center(
                 child: Text(
                   "Register Account",
@@ -110,7 +115,7 @@ class SignUpSCreen extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
