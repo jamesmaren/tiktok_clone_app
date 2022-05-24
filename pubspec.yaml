@@ -40,7 +40,12 @@ dependencies:
   firebase_storage: ^10.2.16
   cloud_firestore: ^3.1.15
   image_picker: ^0.8.5+3
-  
+  video_player: ^2.4.2
+  #video_compress: ^3.1.0
+  video_compress:
+    git:
+      url: https://github.com/jonataslaw/VideoCompress.git
+      ref: master
 
 dev_dependencies:
   flutter_test:

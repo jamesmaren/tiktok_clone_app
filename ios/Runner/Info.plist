@@ -54,5 +54,8 @@
 
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone usage</string>
+	<dict>
+	<key>NSAppTransportSecurity</key>
+	</dict>
 </dict>
 </plist>
